@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_comments",
+  "info": {
+    "singularName": "event-comment",
+    "pluralName": "event-comments",
+    "displayName": "Event Comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "datetime": {
+      "type": "datetime"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "richtext"
+    },
+    "comment_replies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment-reply.comment-reply",
+      "mappedBy": "event_comment"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "event_comments"
+    }
+  }
+}
